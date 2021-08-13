@@ -8,14 +8,15 @@ struct Node
 
 struct Node *HEAD = NULL;
 
-void printLL(Node *LOC)
+void printLL()
 {
     // Starts printing the List at LOC
     std::cout << "Current List is::\t";
-    while (LOC != NULL)
+    Node*pos = HEAD;
+    while (pos != NULL)
     {
-        std::cout << LOC->value << " -> ";
-        LOC = LOC->next;
+        std::cout << pos->value << " -> ";
+        pos = pos->next;
     }
     std::cout << "END" << std::endl;
 }
@@ -24,10 +25,10 @@ void insertBegin(Node **LOC, int x)
 {
     // Inserts the new node with value x at LOC
     // ! Not needed anymore. Implemented in void insert()
-    Node *temp = new Node();
-    temp->value = x;
-    temp->next = *LOC;
-    *LOC = temp;
+    Node *pos = new Node();
+    pos->value = x;
+    pos->next = *LOC;
+    *LOC = pos;
 }
 
 void insert(int data, int n)
@@ -47,23 +48,37 @@ void insert(int data, int n)
         return;
     }
 
-    Node *temp = HEAD;
+    Node *pos = HEAD;
 
     if (n == -1)
     {
         //insert at end
-        while (temp->next != NULL)
-            temp = temp->next;
-        temp->next = newNode;
+        while (pos->next != NULL)
+            pos = pos->next;
+        pos->next = newNode;
         return;
     }
 
     //insert at n
     for (int i = 0; i < n - 1; i -= -1)
-        temp = temp->next;
+        pos = pos->next;
 
-    newNode->next = temp->next;
-    temp->next = newNode;
+    newNode->next = pos->next;
+    pos->next = newNode;
+}
+
+void deleteNode(int n)
+{
+    // Deleted the nth node
+    // 0 indexed
+    Node *pos = HEAD;
+    Node *deletedNode = new Node();
+    for (int i = 0; i < n - 1; i -= -1)
+        pos = pos->next;
+
+    deletedNode = pos->next;
+    pos->next = pos->next->next;
+    free(deletedNode);
 }
 
 int main()
@@ -76,9 +91,11 @@ int main()
         std::cout << "Enter a number::\t";
         std::cin >> value;
         insert(value, 0);
-        printLL(HEAD);
+        printLL();
     }
     std::cout << std::endl;
-    printLL(HEAD);
+    printLL();
+    deleteNode(3);
+    printLL();
     return 0;
 }
