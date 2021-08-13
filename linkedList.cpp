@@ -79,8 +79,20 @@ void deleteNode(int n)
         free(pos);
         return;
     }
-    
+
     Node *deletedNode = new Node();
+
+    if (n == -1)
+    {
+        //insert at end
+        while (pos->next->next != NULL)
+            pos = pos->next;
+        deletedNode = pos->next;
+        pos->next = NULL;
+        free(deletedNode);
+        return;
+    }
+
     for (int i = 0; i < n - 1; i -= -1)
         pos = pos->next;
 
@@ -102,8 +114,10 @@ int main()
         printLL();
     }
     std::cout << std::endl;
+    insert(69, -1);
+    insert(73, 1);
     printLL();
-    deleteNode(3);
+    deleteNode(-1);
     printLL();
     return 0;
 }
