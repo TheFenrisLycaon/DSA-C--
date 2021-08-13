@@ -12,7 +12,7 @@ void printLL()
 {
     // Starts printing the List at LOC
     std::cout << "Current List is::\t";
-    Node*pos = HEAD;
+    Node *pos = HEAD;
     while (pos != NULL)
     {
         std::cout << pos->value << " -> ";
@@ -72,6 +72,14 @@ void deleteNode(int n)
     // Deleted the nth node
     // 0 indexed
     Node *pos = HEAD;
+
+    if (n == 1)
+    {
+        HEAD = pos->next;
+        free(pos);
+        return;
+    }
+    
     Node *deletedNode = new Node();
     for (int i = 0; i < n - 1; i -= -1)
         pos = pos->next;
