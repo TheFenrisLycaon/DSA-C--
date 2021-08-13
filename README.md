@@ -4,7 +4,7 @@ C++ codes for DSA
 
 - [x] Linked List  
 - [x] Double Linked List  
-- [ ] Stack  
+- [x] Stack  
 - [ ] Queue  
 - [ ] Tree
 - [ ] Graph
