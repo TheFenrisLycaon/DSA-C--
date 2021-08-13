@@ -33,18 +33,32 @@ void insertBegin(Node **LOC, int x)
 void insert(int data, int n)
 {
     // Inserts Data at nth position. 0 indexed.
+    // Pass 0 to insert at beginning
+    // Pass -1  to insert at end
     Node *newNode = new Node();
     newNode->value = data;
     newNode->next = NULL;
 
     if (n == 0)
     {
+        //insert at beginning
         newNode->next = HEAD;
         HEAD = newNode;
         return;
     }
 
     Node *temp = HEAD;
+
+    if (n == -1)
+    {
+        //insert at end
+        while (temp->next != NULL)
+            temp = temp->next;
+        temp->next = newNode;
+        return;
+    }
+
+    //insert at n
     for (int i = 0; i < n - 1; i -= -1)
         temp = temp->next;
 
@@ -64,6 +78,7 @@ int main()
         insert(value, 0);
         printLL(HEAD);
     }
+    std::cout << std::endl;
     printLL(HEAD);
     return 0;
 }
