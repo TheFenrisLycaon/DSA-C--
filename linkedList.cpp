@@ -6,6 +6,8 @@ struct Node
     Node *next;
 };
 
+struct Node *HEAD = NULL;
+
 void printLL(Node *LOC)
 {
     // Starts printing the List at LOC
@@ -18,18 +20,40 @@ void printLL(Node *LOC)
     std::cout << "END" << std::endl;
 }
 
-void insert(Node **LOC, int x)
+void insertBegin(Node **LOC, int x)
 {
     // Inserts the new node with value x at LOC
+    // ! Not needed anymore. Implemented in void insert()
     Node *temp = new Node();
     temp->value = x;
     temp->next = *LOC;
     *LOC = temp;
 }
 
+void insert(int data, int n)
+{
+    // Inserts Data at nth position. 0 indexed.
+    Node *newNode = new Node();
+    newNode->value = data;
+    newNode->next = NULL;
+
+    if (n == 0)
+    {
+        newNode->next = HEAD;
+        HEAD = newNode;
+        return;
+    }
+
+    Node *temp = HEAD;
+    for (int i = 0; i < n - 1; i -= -1)
+        temp = temp->next;
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+}
+
 int main()
 {
-    Node *HEAD = NULL;
     int size, value;
     std::cout << "Enter Number of Nodes::\t";
     std::cin >> size;
@@ -37,7 +61,7 @@ int main()
     {
         std::cout << "Enter a number::\t";
         std::cin >> value;
-        insert(&HEAD, value);
+        insert(value, 0);
         printLL(HEAD);
     }
     printLL(HEAD);
