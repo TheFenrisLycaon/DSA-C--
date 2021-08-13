@@ -113,7 +113,7 @@ void deleteNode(int n)
     free(deletedNode);
 }
 
-void reverse()
+void reverseNaive()
 {
     Node *pos = new Node(), *prev = new Node(), *next = new Node();
     pos = HEAD;
@@ -127,6 +127,18 @@ void reverse()
         pos = next;
     }
     HEAD = prev;
+}
+
+void reverse(Node *pos)
+{
+    if (pos->next == NULL)
+    {
+        HEAD = pos;
+        return;
+    }
+    reverse(pos->next);
+    pos->next->next = pos;
+    pos->next = NULL;
 }
 
 int main()
@@ -143,14 +155,14 @@ int main()
     }
     std::cout << std::endl;
 
-    insert(69, -1);
-    insert(73, 1);
-    printLL(HEAD);
+    // insert(69, -1);
+    // insert(73, 1);
+    // printLL(HEAD);
 
-    deleteNode(-1);
-    printLL(HEAD);
+    // deleteNode(-1);
+    // printLL(HEAD);
 
-    reverse();
+    reverse(HEAD);
     printLL(HEAD);
 
     return 0;
