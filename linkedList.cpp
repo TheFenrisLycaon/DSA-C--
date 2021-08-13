@@ -8,7 +8,7 @@ struct Node
 
 struct Node *HEAD = NULL;
 
-void printLL()
+void printNaive()
 {
     // Starts printing the List at LOC
     std::cout << "Current List is::\t";
@@ -19,6 +19,18 @@ void printLL()
         pos = pos->next;
     }
     std::cout << "END" << std::endl;
+}
+
+void printLL(Node *pos)
+{
+    if (pos == NULL)
+    {
+        std::cout << "END" << std::endl;
+        return;
+    }
+    // To print in revrse order switch the next two lines
+    std::cout << pos->value << " -> ";
+    printLL(pos->next);
 }
 
 void insertBegin(Node **LOC, int x)
@@ -101,6 +113,22 @@ void deleteNode(int n)
     free(deletedNode);
 }
 
+void reverse()
+{
+    Node *pos = new Node(), *prev = new Node(), *next = new Node();
+    pos = HEAD;
+    prev = NULL;
+
+    while (pos != NULL)
+    {
+        next = pos->next;
+        pos->next = prev;
+        prev = pos;
+        pos = next;
+    }
+    HEAD = prev;
+}
+
 int main()
 {
     int size, value;
@@ -111,13 +139,19 @@ int main()
         std::cout << "Enter a number::\t";
         std::cin >> value;
         insert(value, 0);
-        printLL();
+        printLL(HEAD);
     }
     std::cout << std::endl;
+
     insert(69, -1);
     insert(73, 1);
-    printLL();
+    printLL(HEAD);
+
     deleteNode(-1);
-    printLL();
+    printLL(HEAD);
+
+    reverse();
+    printLL(HEAD);
+
     return 0;
 }
