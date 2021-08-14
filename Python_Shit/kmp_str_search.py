@@ -1,4 +1,4 @@
-"""Author Anurag Kumar(mailto:anuragkumarak95@gmail.com)
+"""
     The Knuth-Morris-Pratt Algorithm for finding a pattern within a piece of te$
     with complexity O(n + m)
     1) Preprocess pattern to identify any suffixes that are identical to prefix$
