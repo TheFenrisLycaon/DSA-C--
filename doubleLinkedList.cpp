@@ -33,12 +33,16 @@ Node *generateNode(int x)
 
 void insertAtHead(int x)
 {
+    // Inserts a new node at head
     Node *newNode = generateNode(x);
+
+    // If list is empty just create new node
     if (HEAD == NULL)
     {
         HEAD = newNode;
         return;
     }
+
     HEAD->prev = newNode;
     newNode->next = HEAD;
     HEAD = newNode;
@@ -46,7 +50,10 @@ void insertAtHead(int x)
 
 void insertAtTail(int x)
 {
+    // Insert at end
     Node *newNode = generateNode(x);
+
+    // If list is empty just create new node
     if (HEAD == NULL)
     {
         HEAD = newNode;
@@ -54,7 +61,7 @@ void insertAtTail(int x)
     }
     
     Node *pos = HEAD;
-
+    // Traverse to end and set new node to to end
     while (pos->next != NULL)
         pos = pos->next;
 
@@ -65,6 +72,7 @@ void insertAtTail(int x)
 
 void printForward()
 {
+    // Print in forward direction
     Node *pos = HEAD;
     while (pos != NULL)
     {
@@ -76,6 +84,7 @@ void printForward()
 
 void printBackward()
 {
+    // Revrse print
     Node *pos = HEAD;
     if (pos == NULL)
         return;

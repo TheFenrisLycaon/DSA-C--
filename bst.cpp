@@ -5,156 +5,253 @@ struct Node
     int value;
     // The left node is always lesser than it's parent node
     // The right is always greater than it's parent node
-    // Makes things like searching and sorting easier.
+    // Makes things like searching and balancing easier.
     Node *left;
     Node *right;
 };
 
 Node *generateNewNode(int x)
 {
+    // Generates a new node in heap.
     Node *newNode = new Node();
     newNode->value = x;
     newNode->left = newNode->right = NULL;
+
     return newNode;
 }
 
-Node *insert(Node *root, int x)
+Node *insert(Node *current, int x)
 {
-    if (root == NULL)
-    {
-        root = generateNewNode(x);
-    }
-    else if (root->value < x)
-        root->right = insert(root->right, x);
+    // Inserts a new node at the correct position according to sorting.
+
+    // If no node is present, insert the root node
+    if (current == NULL)
+        current = generateNewNode(x);
+
+    // If value to be inserted is greater than or equal to current value
+    // Insert at right child
+    else if (current->value <= x)
+        current->right = insert(current->right, x);
+
+    // If value to be inserted is smaller than current value
+    // Insert at left child
     else
-        root->left = insert(root->left, x);
-    return root;
+        current->left = insert(current->left, x);
+
+    return current;
 }
 
-bool search(Node *root, int x)
+bool search(Node *current, int x)
 {
-    if (root == NULL)
+    // Searches for an element in the tree
+    // Since the tree is already sorted
+    // We can use this to find the element more efficiently
+
+    // If no node is present return false
+    if (current == NULL)
         return false;
-    else if (x == root->value)
+
+    // If value to be searched is on this node return true
+    else if (x == current->value)
         return true;
-    else if (x < root->value)
-        return search(root->left, x);
+
+    // If it is lesser than the node value search in left subtree
+    else if (x < current->value)
+        return search(current->left, x);
+
+    // If it is greater than the node value search in right subtree
     else
-        return search(root->right, x);
+        return search(current->right, x);
 }
 
-int findMin(Node *root)
+int findMin(Node *current)
 {
-    // Gives min value of leaf node.x
-    if (root->left == NULL)
-        return root->value;
+    // Gives min value in the tree
+    // Since this is a BST, the left child, if present, will always have lesser value than its parent
+    // We check for the same by making recursive calls and finding the left-most node
+    if (current->left == NULL)
+        return current->value;
     else
-        return findMin(root->left);
+        return findMin(current->left);
 }
 
-int findMax(Node *root)
+int findMax(Node *current)
 {
-    // Node *pos = root;
-    if (root->right == NULL)
-        return root->value;
+    // Gives max value in th tree
+    // Since this is a BST, the right child, if present, will always have greater value than its parent
+    // We check for the same by making recursive calls and finding the right-most node
+    if (current->right == NULL)
+        return current->value;
     else
-        return findMax(root->right);
+        return findMax(current->right);
 }
 
-int getHeight(Node *root)
+int getMaxHeight(Node *current)
 {
-    if (root == NULL)
+    // Gives the max height of tree
+    // Height of a node is defined as the longest path from the node to a leaf node
+    // Max height of a tree is the height of root
+    // Depth of a node is defined as the num of edges in path from root to that node
+
+    // returns -1 since height of leaf node is 0
+    // -1 balances the +1 in the next step.
+    if (current == NULL)
         return -1;
-    return std::max(getHeight(root->left), getHeight(root->right)) + 1;
+
+    // Get max from the height of left and right subtrees.
+    return std::max(getMaxHeight(current->left), getMaxHeight(current->right)) + 1;
 }
 
 void levelOrder(Node *root)
 {
+    // Level order traversal is also known as breadth first traversal
+    // We visit nodes level by level starting from root node.
+
+    // If no children are present, return to main
     if (root == NULL)
         return;
+
+    // We first visit the root node at level 0
+    // Then we go to the next level and find two nodes.
+    // If we choose one node, we cannot visit the children of another node
+    // Revisiting solves this problem but is not allowed since we have to visit a node only once
+    // So, we need to store the pointers to the left out nodes and access them later
+    // Notice that the pointers will be accessed in FIFO mode
+    // Thus, queue is used and we push the root to queue.
+
     std::queue<Node *> Q;
     Q.push(root);
+
+    // Repeat while Queue isn't empty
     while (!Q.empty())
     {
         Node *pos = Q.front();
+
+        // Visit the element on the front node
         std::cout << pos->value << "|\t";
+
+        // Keep checking if left or right node exists and push them in the queue
         if (pos->left != NULL)
             Q.push(pos->left);
         if (pos->right != NULL)
             Q.push(pos->right);
+
+        // Pop the front element since it has already been visited.
         Q.pop();
     }
 }
 
-void preOrder(Node *root)
+// The next three traversals are called depth-first traversal
+// Visit all the node in a subtree before visiting the other subree
+
+void preOrder(Node *current)
 {
-    if (root == NULL)
+    // Goes in order of root -> left -> right ( P L R)
+    // Visit a node, go to left, go to right
+
+    // If no children are present, return
+    if (current == NULL)
         return;
-    std::cout << root->value << "|\t";
-    preOrder(root->left);
-    preOrder(root->right);
+
+    std::cout << current->value << "|\t"; // P
+    preOrder(current->left);              // L
+    preOrder(current->right);             // R
 }
 
-void postOrder(Node *root)
+void postOrder(Node *current)
 {
-    if (root == NULL)
+    // Goes in order of left -> right -> root ( L R P )
+    // Go to left, go to right, visit the parent node
+
+    // If no children are present, return
+    if (current == NULL)
         return;
-    postOrder(root->left);
-    postOrder(root->right);
-    std::cout << root->value << "|\t";
+
+    postOrder(current->left);             // L
+    postOrder(current->right);            // R
+    std::cout << current->value << "|\t"; // P
 }
 
-void inOrder(Node *root)
+void inOrder(Node *current)
 {
-    if (root == NULL)
+    // Goes in order of left -> root -> right ( L P R )
+    // Go to left, visit the parent node, go to right
+
+    // If no children are present, return
+    if (current == NULL)
         return;
-    inOrder(root->left);
-    std::cout << root->value << "|\t";
-    inOrder(root->right);
+
+    inOrder(current->left);               // L
+    std::cout << current->value << "|\t"; // P
+    inOrder(current->right);              // R
 }
 
-bool isLesser(Node *root, int parameter)
+bool isLesser(Node *current, int parameter)
 {
     // ! Expensive
-    if (root == NULL)
+    if (current == NULL)
         return true;
-    if (root->value <= parameter && isLesser(root->left, parameter) && isLesser(root->right, parameter))
+
+    if (current->value <= parameter && isLesser(current->left, parameter) && isLesser(current->right, parameter))
         return true;
+
     return false;
 }
 
-bool isGreater(Node *root, int parameter)
+bool isGreater(Node *current, int parameter)
 {
     //! Expensive
-    if (root == NULL)
+    if (current == NULL)
         return true;
-    if (root->value >= parameter && isGreater(root->left, parameter) && isGreater(root->right, parameter))
+
+    if (current->value >= parameter && isGreater(current->left, parameter) && isGreater(current->right, parameter))
         return true;
+
     return false;
 }
 
-bool isBinaryExpensive(Node *root)
+bool isBinaryExpensive(Node *current)
 {
     //! Here the functions isLesser and isGreater are very expensive since we look at all the values inside the tree.
-    if (root == NULL)
+
+    // If no children are present return
+    if (current == NULL)
         return true;
-    if (isBinaryExpensive(root->left) && isBinaryExpensive(root->right) && isLesser(root->left, root->value) && isGreater(root->right, root->value))
+
+    // Check if left and right subtrees are binary
+    // Check if all the values in left sub are lesser than current and right sub are greater than current.
+    // ! Even if any value in left is greater or any value in right is smaller,
+    // ! the above two functions donot stop and execute anyway.
+    if (isBinaryExpensive(current->left) && isBinaryExpensive(current->right) && isLesser(current->left, current->value) && isGreater(current->right, current->value))
         return true;
+
     return false;
 }
 
-bool isBinary(Node *root, int minVal, int maxVal)
+bool isBinary(Node *current, int minVal, int maxVal)
 {
     // Better Solution
-    if (root == NULL)
+    // Pass a min and max bounds for the value at the current node.
+    // For 1st generation
+    // The range is between -INF and INF
+    // For 2nd generation
+    // The range is between -INF, currentValue and currentValue, INF for left and right children.
+    // For third generation nodes and forward, 
+    // The range is even lesser since they have to be b/w their parents and their grandparents.
+
+    // If no children are present, return
+    if (current == NULL)
         return true;
-    if (root->value > minVal &&
-        root->value < maxVal &&
-        isBinary(root->left, minVal, root->value) &&
-        isBinary(root->right, root->value, maxVal))
+
+    // Check if current node is b/w minVal and maxVal
+    // Check for left tree and right tree
+    if (current->value > minVal &&
+        current->value < maxVal &&
+        isBinary(current->left, minVal, current->value) &&
+        isBinary(current->right, current->value, maxVal))
         return true;
-    else
-        return false;
+
+    return false;
 }
 
 int main()
@@ -177,7 +274,7 @@ int main()
     std::cout << findMin(ROOT) << std::endl;
 
     // Getting Height
-    std::cout << getHeight(ROOT) << std::endl;
+    std::cout << getMaxHeight(ROOT) << std::endl;
 
     // Traversal
     levelOrder(ROOT);
