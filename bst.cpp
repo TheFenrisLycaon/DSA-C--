@@ -64,24 +64,24 @@ bool search(Node *current, int x)
         return search(current->right, x);
 }
 
-int findMin(Node *current)
+Node *findMin(Node *current)
 {
-    // Gives min value in the tree
+    // Gives node with min value in the tree
     // Since this is a BST, the left child, if present, will always have lesser value than its parent
     // We check for the same by making recursive calls and finding the left-most node
     if (current->left == NULL)
-        return current->value;
+        return current;
     else
         return findMin(current->left);
 }
 
-int findMax(Node *current)
+Node *findMax(Node *current)
 {
-    // Gives max value in th tree
+    // Gives node with max value in th tree
     // Since this is a BST, the right child, if present, will always have greater value than its parent
     // We check for the same by making recursive calls and finding the right-most node
     if (current->right == NULL)
-        return current->value;
+        return current;
     else
         return findMax(current->right);
 }
@@ -107,7 +107,7 @@ void levelOrder(Node *root)
     // Level order traversal is also known as breadth first traversal
     // We visit nodes level by level starting from root node.
 
-    // If no children are present, return to main
+    // If tree is empty, return to main
     if (root == NULL)
         return;
 
@@ -149,7 +149,7 @@ void preOrder(Node *current)
     // Goes in order of root -> left -> right ( P L R)
     // Visit a node, go to left, go to right
 
-    // If no children are present, return
+    // If tree is empty, return
     if (current == NULL)
         return;
 
@@ -163,7 +163,7 @@ void postOrder(Node *current)
     // Goes in order of left -> right -> root ( L R P )
     // Go to left, go to right, visit the parent node
 
-    // If no children are present, return
+    // If tree is empty, return
     if (current == NULL)
         return;
 
@@ -177,7 +177,7 @@ void inOrder(Node *current)
     // Goes in order of left -> root -> right ( L P R )
     // Go to left, visit the parent node, go to right
 
-    // If no children are present, return
+    // If tree is empty, return
     if (current == NULL)
         return;
 
@@ -236,10 +236,10 @@ bool isBinary(Node *current, int minVal, int maxVal)
     // The range is between -INF and INF
     // For 2nd generation
     // The range is between -INF, currentValue and currentValue, INF for left and right children.
-    // For third generation nodes and forward, 
+    // For third generation nodes and forward,
     // The range is even lesser since they have to be b/w their parents and their grandparents.
 
-    // If no children are present, return
+    // If tree is empty, return
     if (current == NULL)
         return true;
 
@@ -252,6 +252,67 @@ bool isBinary(Node *current, int minVal, int maxVal)
         return true;
 
     return false;
+}
+
+Node *deleteNode(Node *current, int data)
+{
+    // Deleting a node from a tree
+
+    // If tree is empty, return
+    if (current == NULL)
+        return current;
+
+    // Data is smaller, search in left subtree
+    else if (current->value > data)
+        current->left = deleteNode(current->left, data);
+
+    // Data is greater, search in right subtree
+    else if (current->value < data)
+        current->right = deleteNode(current->right, data);
+
+    // Found ya bruh. You're DEAD NOW !!!
+    // Node to be deleted can have three cases.
+    else
+    {
+        // Can have no child nodes
+        // Just set the current node to null
+        if (current->left == NULL && current->right == NULL)
+        {
+            delete current;
+            current = NULL;
+        }
+
+        // Can have one child
+        // Set the child node as current node and return
+        // Left Only
+        else if (current->left == NULL)
+        {
+            Node *temp = current;
+            current = current->left;
+            delete temp;
+        }
+
+        // Can have one child
+        // Set the child node as current node and return
+        // Right Only
+        else if (current->right == NULL)
+        {
+            Node *temp = current;
+            current = current->right;
+            delete temp;
+        }
+
+        // Can have both children
+        // Find the min value in the right side and replace with node to be deleted
+        else
+        {
+            Node *temp = findMin(current->right);
+            current->value = temp->value;
+            current->right = deleteNode(current->right, temp->value);
+        }
+    }
+
+    return current;
 }
 
 int main()
@@ -270,8 +331,8 @@ int main()
     std::cout << search(ROOT, 10) << std::endl;
 
     // Finding Min and Max
-    std::cout << findMax(ROOT) << std::endl;
-    std::cout << findMin(ROOT) << std::endl;
+    std::cout << findMax(ROOT)->value << std::endl;
+    std::cout << findMin(ROOT)->value << std::endl;
 
     // Getting Height
     std::cout << getMaxHeight(ROOT) << std::endl;
@@ -289,5 +350,14 @@ int main()
     // Checking Binary Search
     std::cout << isBinary(ROOT, INT_MIN, INT_MAX) << std::endl;
     std::cout << isBinaryExpensive(ROOT) << std::endl;
+
+    // Deletion
+    deleteNode(ROOT, 8);
+    preOrder(ROOT);
+    std::cout << std::endl;
+    deleteNode(ROOT, 20);
+    preOrder(ROOT);
+    std::cout << std::endl;
+
     return 0;
 }
