@@ -18,6 +18,11 @@ public:
         topPos++;
     }
 
+    bool isEmpty()
+    {
+        return (topPos == 0) ? true : false;
+    }
+    
     void pop()
     {
         if (topPos == 0)
@@ -30,13 +35,14 @@ public:
 
     int top()
     {
+        if (topPos == 0)
+        {
+            std::cout << "Error::\tNo Elements Present !" << std::endl;
+            return -1;
+        }
         return arr[topPos - 1];
     }
 
-    bool isEmpty()
-    {
-        return (topPos == 0) ? true : false;
-    }
 
     void print()
     {
@@ -62,6 +68,7 @@ int main()
     std::cout << "Top Element::\t" << stack.top() << std::endl;
     stack.pop();
     stack.print();
+    std::cout << "Top Element::\t" << stack.top() << std::endl;
     stack.pop();
     stack.print();
     stack.pop();
