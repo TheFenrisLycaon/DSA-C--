@@ -41,7 +41,7 @@ Node *insert(Node *current, int x)
     return current;
 }
 
-bool search(Node *current, int x)
+Node *search(Node *current, int x)
 {
     // Searches for an element in the tree
     // Since the tree is already sorted
@@ -49,11 +49,11 @@ bool search(Node *current, int x)
 
     // If no node is present return false
     if (current == NULL)
-        return false;
+        return NULL;
 
     // If value to be searched is on this node return true
     else if (x == current->value)
-        return true;
+        return current;
 
     // If it is lesser than the node value search in left subtree
     else if (x < current->value)
@@ -313,6 +313,46 @@ Node *deleteNode(Node *current, int data)
     }
 
     return current;
+}
+
+Node *inorderSuccessor(Node *root, int data)
+{
+    // Find the inorder successor in a BST.
+    // Can be done by inorder traversal but is expensive since it is O(n)
+    // * In BST, we wanna do most tasks in O(h) where h is the height of tree.
+
+    // Find the left- most node in the right subtree (recursive)
+    Node *current = search(root, data);
+    if (current == NULL)
+        return NULL;
+
+    // There can be two cases
+
+    // Case 1 : Node has a right subtree
+    if (current->right != NULL)
+    {
+        Node *pos = current->right;
+        return findMin(current->right);
+    }
+
+    // Case 2 : NOde doesn't have a right subtree
+    else
+    {
+        Node *successor = NULL;
+        Node *ancestor = NULL;
+        while (ancestor != current)
+        {
+            if (current->value < ancestor->value)
+            {
+                successor = ancestor;
+                // Successor is the deepest node for which the currect node is in left
+                ancestor = ancestor->left;
+            }
+            else
+                ancestor = ancestor->right;
+        }
+        return successor;
+    }
 }
 
 int main()
