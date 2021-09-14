@@ -41,7 +41,7 @@ Node *insert(Node *current, int x)
     return current;
 }
 
-Node *search(Node *current, int x)
+Node *find(Node *current, int x)
 {
     // Searches for an element in the tree
     // Since the tree is already sorted
@@ -57,11 +57,18 @@ Node *search(Node *current, int x)
 
     // If it is lesser than the node value search in left subtree
     else if (x < current->value)
-        return search(current->left, x);
+        return find(current->left, x);
 
     // If it is greater than the node value search in right subtree
     else
-        return search(current->right, x);
+        return find(current->right, x);
+}
+
+bool search(Node *current, int data)
+{
+    if (find(current, data) == NULL)
+        return false;
+    return true;
 }
 
 Node *findMin(Node *current)
@@ -322,7 +329,7 @@ Node *inorderSuccessor(Node *root, int data)
     // * In BST, we wanna do most tasks in O(h) where h is the height of tree.
 
     // Find the left- most node in the right subtree (recursive)
-    Node *current = search(root, data);
+    Node *current = find(root, data);
     if (current == NULL)
         return NULL;
 
@@ -355,6 +362,55 @@ Node *inorderSuccessor(Node *root, int data)
     }
 }
 
+void levelPrint(Node *root, int wantedLevel)
+{
+    // Return if empty
+    if (root == NULL)
+        return;
+
+    // Start a counter with 0 to store the current level number.
+    int levelCount = 0;
+    std::queue<Node *> Q;
+
+    // Push Root to Queue
+    Q.push(root);
+
+    // While Q is not empty and the level order is not our desired level, 
+    // Keep Traversing
+    while (!Q.empty() & levelCount != wantedLevel)
+    {
+        // Check size of queue
+        int size = Q.size();
+
+        // Get the first item in Queue and decrese the size by 1
+        Node *pos = Q.front();
+        size--;
+
+        // Put left and right in Queue if exist
+        if (pos->left != NULL)
+            Q.push(pos->left);
+        if (pos->right != NULL)
+            Q.push(pos->right);
+
+        // Remove item from Queue
+        Q.pop();
+
+        // If size is 0, we have completely traversed the current level
+        // Increase the counter by 1.
+        if (size == 0)
+            levelCount++;
+    }
+
+    // Print the queue with the desired elements.
+    while (Q.size())
+    {
+        std::cout << Q.front()->value << "|\t";
+        Q.pop();
+    }
+
+    std::cout<<std::endl;
+}
+
 int main()
 {
     Node *ROOT = NULL;
@@ -366,38 +422,42 @@ int main()
     ROOT = insert(ROOT, 17);
     ROOT = insert(ROOT, 25);
 
-    // Searching
-    std::cout << search(ROOT, 8) << std::endl;
-    std::cout << search(ROOT, 10) << std::endl;
+    // // Searching
+    // std::cout << search(ROOT, 8) << std::endl;
+    // std::cout << search(ROOT, 10) << std::endl;
 
-    // Finding Min and Max
-    std::cout << findMax(ROOT)->value << std::endl;
-    std::cout << findMin(ROOT)->value << std::endl;
+    // // Finding Min and Max
+    // std::cout << findMax(ROOT)->value << std::endl;
+    // std::cout << findMin(ROOT)->value << std::endl;
 
-    // Getting Height
-    std::cout << getMaxHeight(ROOT) << std::endl;
+    // // Getting Height
+    // std::cout << getMaxHeight(ROOT) << std::endl;
 
-    // Traversal
-    levelOrder(ROOT);
-    std::cout << std::endl;
-    preOrder(ROOT);
-    std::cout << std::endl;
-    inOrder(ROOT);
-    std::cout << std::endl;
-    postOrder(ROOT);
-    std::cout << std::endl;
+    // // Traversal
+    // levelOrder(ROOT);
+    // std::cout << std::endl;
+    // preOrder(ROOT);
+    // std::cout << std::endl;
+    // inOrder(ROOT);
+    // std::cout << std::endl;
+    // postOrder(ROOT);
+    // std::cout << std::endl;
 
-    // Checking Binary Search
-    std::cout << isBinary(ROOT, INT_MIN, INT_MAX) << std::endl;
-    std::cout << isBinaryExpensive(ROOT) << std::endl;
+    // // Checking Binary Search
+    // std::cout << isBinary(ROOT, INT_MIN, INT_MAX) << std::endl;
+    // std::cout << isBinaryExpensive(ROOT) << std::endl;
 
-    // Deletion
-    deleteNode(ROOT, 8);
-    preOrder(ROOT);
-    std::cout << std::endl;
-    deleteNode(ROOT, 20);
-    preOrder(ROOT);
-    std::cout << std::endl;
+    // // Deletion
+    // deleteNode(ROOT, 8);
+    // preOrder(ROOT);
+    // std::cout << std::endl;
+    // deleteNode(ROOT, 20);
+    // preOrder(ROOT);
+    // std::cout << std::endl;
+
+    // Level Print
+    levelPrint(ROOT, 0);
+    levelPrint(ROOT, 1);
 
     return 0;
 }
