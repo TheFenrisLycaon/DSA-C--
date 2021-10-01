@@ -10,5 +10,5 @@
 ## HacktoberFest
 
 This repo is also registered for hacktoberfest. Your contributions will help you get swags.  
-Read [the guidlines](CONTRIBUTING.md) for the whole process.
+Read [the guidlines](Docs/CONTRIBUTING.md) for the whole process.  
 Fork > Code > Commit > Push > Win Swag. It's free.
