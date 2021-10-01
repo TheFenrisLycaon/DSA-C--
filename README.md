@@ -4,7 +4,7 @@
 - [x] Double Linked List  
 - [x] Stack  
 - [x] Queue  
-- [ ] Tree
+- [x] Tree
 - [ ] Graph
 
 ## HacktoberFest
