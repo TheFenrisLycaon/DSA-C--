@@ -1,16 +1,18 @@
 import sys
 
+
 class Node:
     """Class for node of a tree"""
-    def __init__(self, info):
+
+    def __init__(self, data):
         """Initialising a node"""
-        self.info = info
+        self.data = data
         self.left = None
         self.right = None
         # self.level = None
 
     def __str__(self):
-        return str(self.info)
+        return str(self.data)
 
     def __del__(self):
         del self
@@ -18,6 +20,7 @@ class Node:
 
 class BinarySearchTree:
     """Class for BST"""
+
     def __init__(self):
         """Initialising a BST"""
         self.root = None
@@ -31,13 +34,13 @@ class BinarySearchTree:
         else:
             current = self.root
             while True:
-                if val < current.info:
+                if val < current.data:
                     if current.left:
                         current = current.left
                     else:
                         current.left = Node(val)
                         break
-                elif val > current.info:
+                elif val > current.data:
                     if current.right:
                         current = current.right
                     else:
@@ -46,24 +49,24 @@ class BinarySearchTree:
                 else:
                     break
 
-    def search(self, val, to_delete = False):
+    def search(self, val, to_delete=False):
         current = self.root
         prev = -1
         while current:
-            if val < current.info:
+            if val < current.data:
                 prev = current
                 current = current.left
-            elif val > current.info:
+            elif val > current.data:
                 prev = current
                 current = current.right
-            elif current.info == val:
+            elif current.data == val:
                 if not to_delete:
                     return 'Match Found'
                 return prev
             else:
                 break
         if not to_delete:
-            return 'Not Found' 
+            return 'Not Found'
 
     # Method to delete a tree-node if it exists, else error message will be returned.
     def delete(self, val):
@@ -79,13 +82,13 @@ class BinarySearchTree:
                     temp = temp.right
                 if prev2 is None:
                     self.root.left = temp.left
-                    self.root.info = temp.info
+                    self.root.data = temp.data
                 else:
                     prev2.right = None
-                    self.root.info = temp.info
+                    self.root.data = temp.data
                 print('Deleted Root ', val)
             # Check if node is to left of its parent
-            elif prev.left and prev.left.info == val:
+            elif prev.left and prev.left.data == val:
                 # Check if node is leaf node
                 if prev.left.left is prev.left.right:
                     prev.left = None
@@ -105,14 +108,13 @@ class BinarySearchTree:
                         prev2 = temp
                         temp = temp.right
                     prev2.right = None
-                    prev.left.info = temp.info
+                    prev.left.data = temp.data
                     print('Deleted Node ', val)
                 else:
                     print('Error Left')
 
-
             # Check if node is to right of its parent
-            elif prev.right.info == val:
+            elif prev.right.data == val:
                 flag = 0
                 # Check is node is a leaf node
                 if prev.right.left is prev.right.right:
@@ -133,7 +135,7 @@ class BinarySearchTree:
                         prev2 = temp
                         temp = temp.left
                     prev2.left = None
-                    prev.right.info = temp.info
+                    prev.right.data = temp.data
                     print('Deleted Node ', val)
                 else:
                     if flag == 0:
@@ -144,19 +146,21 @@ class BinarySearchTree:
     def __str__(self):
         return 'Not able to print tree yet'
 
+
 def is_bst(node, lower_lim=None, upper_lim=None):
     """Function to find is a binary tree is a binary search tree."""
-    if lower_lim is not None and node.info < lower_lim:
+    if lower_lim is not None and node.data < lower_lim:
         return False
-    if upper_lim is not None and node.info > upper_lim:
+    if upper_lim is not None and node.data > upper_lim:
         return False
     is_left_bst = True
     is_right_bst = True
     if node.left is not None:
-        is_left_bst = is_bst(node.left, lower_lim, node.info)
+        is_left_bst = is_bst(node.left, lower_lim, node.data)
     if is_left_bst and node.right is not None:
-        is_right_bst = is_bst(node.right, node.info, upper_lim)
+        is_right_bst = is_bst(node.right, node.data, upper_lim)
     return is_left_bst and is_right_bst
+
 
 def postorder(node):
     # L R N : Left , Right, Node
@@ -166,41 +170,44 @@ def postorder(node):
         postorder(node.left)
     if node.right:
         postorder(node.right)
-    print(node.info)
+    print(node.data)
 
 
 def inorder(node):
     # L N R : Left, Node , Right
-    if node is None:
+    if not node:
         return
     if node.left:
         inorder(node.left)
-    print(node.info)
+    print(node.data, end = " ")
     if node.right:
         inorder(node.right)
+    print()
+
 
 def preorder(node):
     # N L R : Node , Left, Right
     if node is None:
         return
-    print(node.info)
-    if node.left:
-        preorder(node.left)
-    if node.right:
-        preorder(node.right)
+    print(node.data)
+    if node.left: preorder(node.left)
+    if node.right: preorder(node.right)
 
 # Levelwise
+
+
 def bfs(node):
     queue = []
     if node:
         queue.append(node)
     while queue != []:
         temp = queue.pop(0)
-        print(temp.info)
+        print(temp.data)
         if temp.left:
             queue.append(temp.left)
         if temp.right:
             queue.append(temp.right)
+
 
 def preorder_itr(node):
     # N L R : Node, Left , Right
@@ -208,22 +215,23 @@ def preorder_itr(node):
     values = []
     while stack != []:
         temp = stack.pop()
-        print(temp.info)
-        values.append(temp.info)
+        print(temp.data)
+        values.append(temp.data)
         if temp.right:
             stack.append(temp.right)
         if temp.left:
             stack.append(temp.left)
     return values
 
+
 def inorder_itr(node):
     # L N R : Left, Node, Right
     # 1) Create an empty stack S.
     # 2) Initialize current node as root
     # 3) Push the current node to S and set current = current->left until current is NULL
-    # 4) If current is NULL and stack is not empty then 
+    # 4) If current is NULL and stack is not empty then
     #     a) Pop the top item from stack.
-    #     b) Print the popped item, set current = popped_item->right 
+    #     b) Print the popped item, set current = popped_item->right
     #     c) Go to step 3.
     # 5) If current is NULL and stack is empty then we are done.
     stack = []
@@ -234,10 +242,11 @@ def inorder_itr(node):
             current = current.left
         elif stack != []:
             temp = stack.pop()
-            print(temp.info)            # N
+            print(temp.data)            # N
             current = temp.right        # R
         else:
             break
+
 
 def postorder_itr(node):
     # L R N
@@ -256,6 +265,7 @@ def postorder_itr(node):
             s1.append(temp.right)
     print(*(s2[::-1]))
 
+
 def bst_frm_pre(pre_list):
     box = Node(pre_list[0])
     if len(pre_list) > 1:
@@ -272,10 +282,11 @@ def bst_frm_pre(pre_list):
             else:
                 all_less = True
             if i != 1:
-                box.left = bst_frm_pre(pre_list[1 : i])
+                box.left = bst_frm_pre(pre_list[1: i])
             if not all_less:
                 box.right = bst_frm_pre(pre_list[i:])
     return box
+
 
 # Function to find the lowest common ancestor of nodes with values c1 and c2.
 # It return value in the lowest common ancestor, -1 indicates value returned for None.
@@ -285,43 +296,47 @@ def lca(t_node, c1, c2):
         return c1
     current = t_node
     while current:
-        if c1 < current.info and c2 < current.info:
+        if c1 < current.data and c2 < current.data:
             current = current.left
-        elif c1 > current.info and c2 > current.info:
+        elif c1 > current.data and c2 > current.data:
             current = current.right
         else:
-            return current.info
+            return current.data
     return -1
+
 
 # Function to print element vertically which lie just below the root node
 def vertical_middle_level(t_node):
-    e = (t_node, 0)         # 0 indicates level 0, to left we have -ve and to right +ve
+    # 0 indicates level 0, to left we have -ve and to right +ve
+    e = (t_node, 0)
     queue = [e]
     ans = []
     # Do a level-order traversal and assign level-value to each node
     while queue != []:
         temp, level = queue.pop(0)
         if level == 0:
-            ans.append(str(temp.info))
+            ans.append(str(temp.data))
         if temp.left:
             queue.append((temp.left, level - 1))
         if temp.right:
             queue.append((temp.right, level + 1))
     return ' '.join(ans)
 
+
 def get_level(n, val):
     c_level = 0
 
-    while n.info != val:
-        if val < n.info:
+    while n.data != val:
+        if val < n.data:
             n = n.left
-        elif val > n.info:
+        elif val > n.data:
             n = n.right
         c_level += 1
         if n is None:
-            return -1 
+            return -1
 
     return c_level
+
 
 def depth(node):
     if node is None:
@@ -331,8 +346,16 @@ def depth(node):
         l_depth = depth(node.left)
     if node.right:
         r_depth = depth(node.right)
-    # print(node.info, l_depth, r_depth)
+    # print(node.data, l_depth, r_depth)
     return 1 + max(l_depth, r_depth)
+
+
+def rightSideView(root):
+    if not root:
+        return []
+    right = rightSideView(root.right)
+    left = rightSideView(root.left)
+    return [root.data] + right + left[len(right):]
 
 
 t = BinarySearchTree()
@@ -347,25 +370,5 @@ t.insert(7)
 t.insert(12)
 t.insert(18)
 t.insert(19)
-print(depth(t.root))
-# inorder(t.root)
-# print()
-# print(t.search(5))
-# t.delete(7)
-# t.delete(5)
-# t.delete(3)
-# t.delete(15)
-# inorder(t.root)
-# print()
-# t.delete(2)
-# t.delete(3)
-# t.delete(7)
-# t.delete(19)
-# t.delete(1)
-# inorder(t.root)
-# b = BinarySearchTree()
-# b.root = bst_frm_pre(preorder_itr(t.root))
-# print(preorder_itr(b.root) == preorder_itr(t.root))
-# print(lca(t.root, 3, 18))
-# print(vertical_middle_level(t.root))
-# print(get_level(t.root, 1))
+preorder_itr(t.root)
+print(rightSideView(t.root))
