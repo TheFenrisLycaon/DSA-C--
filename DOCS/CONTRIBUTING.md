@@ -14,7 +14,7 @@ Below you will find the process and workflow used to review and merge your chang
 - Wait for the Issue to be assigned to you after which you can start working on it.
 - Note : Every change in this project should/must have an associated issue.
 
-![Inkedissue_LI](Images/Issue.jpeg)
+![Inkedissue_LI](../Images/Issue.jpeg)
 
 ## Step 2 : Fork the Project
 
@@ -26,7 +26,7 @@ cd Automation-scripts
 git remote add upstream https://github.com/TheFenrisLycaon/DSA-C--
 ```
 
-![Inkedfork_LI](Images/Fork.jpeg)
+![Inkedfork_LI](../Images/Fork.jpeg)
 
 - If you have already forked the project, update your copy before working.
 
