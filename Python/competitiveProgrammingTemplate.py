@@ -2,13 +2,17 @@ import sys
 import time
 # using template by FenrisLycaon
 
+
 def maxSequence(arr):
-    max,curr=0,0
+    max, curr = 0, 0
     for x in arr:
-        curr+=x
-        if curr<0:curr=0
-        if curr>max:max=curr
+        curr += x
+        if curr < 0:
+            curr = 0
+        if curr > max:
+            max = curr
     return max
+
 
 def getIn(x):
     # custom input
@@ -29,23 +33,24 @@ def getIn(x):
         print("Input not recognised.")
         return 0
 
+
 def goOut(x):
     # custom output
     # supposed to be faster
     if type(x) is list:
         for _ in x:
-            goOut(_)            
-        # sys.stdout.flush() 
+            goOut(_)
+        # sys.stdout.flush()
     else:
         sys.stdout.write(str(x)+'\n')
-        # sys.stdout.flush() 
+        # sys.stdout.flush()
+
 
 if __name__ == "__main__":
     startingTime = time.time()
     res = []
 
     # code here
-
 
     # output ahead
     goOut(res)

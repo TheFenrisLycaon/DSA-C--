@@ -1,6 +1,3 @@
-import sys
-
-
 class Node:
     """Class for node of a tree"""
 
@@ -68,7 +65,8 @@ class BinarySearchTree:
         if not to_delete:
             return 'Not Found'
 
-    # Method to delete a tree-node if it exists, else error message will be returned.
+    # Method to delete a tree-node if it exists,
+    # Else error message will be returned.
     def delete(self, val):
         prev = self.search(val, True)
         # Check if node exists
@@ -126,7 +124,8 @@ class BinarySearchTree:
                     prev.right = prev.right.left
                     print('Deleted Node ', val)
                 # Check if node has right child at None at left
-                elif prev.right and prev.right.left is None and prev.right.right:
+                elif prev.right and prev.right.left is None\
+                        and prev.right.right:
                     prev.right = prev.right.right
                     print('Deleted Node ', val)
                 elif prev.right and prev.right.left and prev.right.right:
@@ -179,7 +178,7 @@ def inorder(node):
         return
     if node.left:
         inorder(node.left)
-    print(node.data, end = " ")
+    print(node.data, end=" ")
     if node.right:
         inorder(node.right)
     print()
@@ -190,8 +189,10 @@ def preorder(node):
     if node is None:
         return
     print(node.data)
-    if node.left: preorder(node.left)
-    if node.right: preorder(node.right)
+    if node.left:
+        preorder(node.left)
+    if node.right:
+        preorder(node.right)
 
 # Levelwise
 
@@ -228,7 +229,8 @@ def inorder_itr(node):
     # L N R : Left, Node, Right
     # 1) Create an empty stack S.
     # 2) Initialize current node as root
-    # 3) Push the current node to S and set current = current->left until current is NULL
+    # 3) a) Push the current node to S
+    #    b) Set current = current->left until current is NULL
     # 4) If current is NULL and stack is not empty then
     #     a) Pop the top item from stack.
     #     b) Print the popped item, set current = popped_item->right
@@ -237,7 +239,7 @@ def inorder_itr(node):
     stack = []
     current = node
     while True:
-        if current != None:
+        if current is not None:
             stack.append(current)       # L
             current = current.left
         elif stack != []:
@@ -289,7 +291,8 @@ def bst_frm_pre(pre_list):
 
 
 # Function to find the lowest common ancestor of nodes with values c1 and c2.
-# It return value in the lowest common ancestor, -1 indicates value returned for None.
+# It return value in the lowest common ancestor,
+# -1 indicates value returned for None.
 # Note that both values v1 and v2 should be present in the bst.
 def lca(t_node, c1, c2):
     if c1 == c2:
