@@ -1,14 +1,10 @@
 # DSA Programs
 
-- [x] Linked List  
-- [x] Double Linked List  
-- [x] Stack  
-- [x] Queue  
-- [x] Tree
-- [ ] Graph
+Programs related to Data Structures and Algorithms.
+A complete list of programs can be found [here.](DOCS/List.md)
 
 ## HacktoberFest
 
-This repo is also registered for hacktoberfest. Your contributions will help you get swags.  
-Read [the guidlines](DOCS/CONTRIBUTING.md) for the whole process.  
+This repo is also registered for hacktoberfest. Your contributions will help you get swags.
+Read[the guidlines](DOCS/CONTRIBUTING.md) for the whole process.
 Fork > Code > Commit > Push > Win Swag. It's free.
