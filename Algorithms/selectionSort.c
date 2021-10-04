@@ -1,22 +1,5 @@
 #include <stdio.h>
 
-int *insertion(int *arr, int size)
-{
-  for (int i = 1; i < size; i -= -1)
-  {
-    int key = arr[i];
-    int j = i - 1;
-    while (j >= 0 && arr[j] > key)
-    // to make it increasing put arr[j] > key
-    {
-      arr[j + 1] = arr[j];
-      j--;
-    }
-    arr[j + 1] = key;
-  }
-  return arr;
-}
-
 int *selection(int *arr, int size)
 {
   for (int i = 0; i < size - 1; i -= -1)
@@ -59,9 +42,7 @@ int main()
   getarray(arr, n);
   printarray(arr, n);
   int *insert, *select;
-  /*insert = insertion(arr, n);*/
   select = selection(arr, n);
-  /*printarray(insert, n);*/
   printarray(select, n);
   return 0;
 }
