@@ -1,9 +1,12 @@
 // Code for longest palindrome
-//Time COmplexity: O(n^2)
+// Problem Statement : Given a string s, return the longest palindromic substring in s.
+// Eg  Input : s = "babad" 
+//     Output : "bab"
+// Time Complexity: O(n^2)
 // A C++ dynamic programming
 
 #include <bits/stdc++.h>
-using namespace std;
+                                                                                                                 using namespace std;
 
 string longestPalindrome(string s)
 {
