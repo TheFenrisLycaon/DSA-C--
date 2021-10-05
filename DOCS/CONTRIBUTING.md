@@ -22,7 +22,7 @@ Below you will find the process and workflow used to review and merge your chang
 
 ```bash
 git clone https://github.com/<your-username>/DSA-C--
-cd Automation-scripts
+cd DSA-C--
 git remote add upstream https://github.com/TheFenrisLycaon/DSA-C--
 ```
 
