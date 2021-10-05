@@ -7,38 +7,38 @@
 //code in c++
 
 #include <bits/stdc++.h>
-using namespace std;
 
 int largestSum(int n, int arr[])
 {
     int maxTill[n];
     maxTill[0] = arr[0];
+
+    // compare (maximum subarray ending in i-1 index + i'th element) and i'th element
+    // the maximum of both will be the maximum subarray ending in i'th index
     for (int i = 1; i < n; ++i)
-    {
-        // compare (maximum subarray ending in i-1 index + i'th element) and i'th element
-        // the maximum of both will be the maximum subarray ending in i'th index
-        maxTill[i] = max(maxTill[i - 1] + arr[i], arr[i]);
-    }
+        maxTill[i] = std ::max(maxTill[i - 1] + arr[i], arr[i]);
+
     int ans = maxTill[0];
     for (int i = 0; i < n; ++i)
-    {
-        ans = max(ans, maxTill[i]);
-    }
+        ans = std ::max(ans, maxTill[i]);
+
     return ans;
 }
+
 int main()
 {
     int n;
-    cin >> n;
+    std ::cin >> n;
     if (n < 1)
     {
-        cout << "Invalid n.";
-        return 0;
+        std ::cout << "Invalid n.";
+        return -1;
     }
 
     int arr[n];
     for (int i = 0; i < n; ++i)
-        cin >> arr[i];
+        std ::cin >> arr[i];
 
-    cout << "Largest Sum Subarray for given array will be: " << largestSum(n, arr);
+    std ::cout << "Largest Sum Subarray for given array will be: " << largestSum(n, arr);
+    return 0;
 }
