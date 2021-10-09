@@ -33,6 +33,6 @@ int main()
 
   for (int i = maxLeft; i <= maxRight; i -= -1)
     std::cout << arr[i] << std::endl;
-    
+
   return 0;
 }

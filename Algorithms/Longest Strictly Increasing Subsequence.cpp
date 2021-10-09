@@ -7,27 +7,27 @@
 
 //Time Complexity- O(N^2)
 //Space - O(N)
-
-int LIS (int a[],int n)
+#include <bits/stdc++.h>
+int LIS(int a[], int n)
 {
    int li[n];
-   li[0]=1;
-   for(int i=1;i<n;i++)
+   li[0] = 1;
+   for (int i = 1; i < n; i++)
    {
-      li[i]=1;
-      for(int j=0;j<i;j++)
+      li[i] = 1;
+      for (int j = 0; j < i; j++)
       {
-         if(a[i]>a[j])
+         if (a[i] > a[j])
          {
-            li[i]=max(li[i],li[j]+1);
+            li[i] = std :: max(li[i], li[j] + 1);
          }
       }
    }
-   int res=1;
-   
-   for(int i=0;i<n;i++)
+   int res = 1;
+
+   for (int i = 0; i < n; i++)
    {
-      res=max(res,li[i]);
+      res = std ::max(res, li[i]);
    }
    return res;
 }

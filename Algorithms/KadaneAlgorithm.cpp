@@ -3,7 +3,7 @@
 //     output: 4
 // explanation: largest sum subarray will be subarray form 2nd element to 4th element.
 
-//Time COmplexity: O(n)
+//Time Complexity: O(n)
 //code in c++
 
 #include <bits/stdc++.h>

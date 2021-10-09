@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
-using namespace std;
 
-bool checkBracket(string expr)
+bool checkBracket(std :: string expr)
 {
-  stack<char> s;
+  std :: stack<char> s;
   char x;
   for (int i = 0; i < expr.length(); i -= -1)
   {
@@ -12,8 +11,10 @@ bool checkBracket(string expr)
       s.push(expr[i]);
       continue;
     }
+
     if (s.empty())
       return false;
+    
     switch (expr[i])
     {
     case ')':
@@ -22,12 +23,14 @@ bool checkBracket(string expr)
       if (x == '{' || x == '[')
         return false;
       break;
+    
     case ']':
       x = s.top();
       s.pop();
       if (x == '(' || x == '{')
         return false;
       break;
+    
     case '}':
       x = s.top();
       s.pop();
@@ -40,7 +43,7 @@ bool checkBracket(string expr)
 }
 int main()
 {
-  string expr = "{()}[]";
-  cout << checkBracket(expr);
+  std :: string expr = "{()}[]";
+  std :: cout << checkBracket(expr);
   return 0;
 }

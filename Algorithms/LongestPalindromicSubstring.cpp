@@ -1,14 +1,13 @@
 // Code for longest palindrome
 // Problem Statement : Given a string s, return the longest palindromic substring in s.
-// Eg  Input : s = "babad" 
+// Eg  Input : s = "babad"
 //     Output : "bab"
 // Time Complexity: O(n^2)
 // A C++ dynamic programming
 
 #include <bits/stdc++.h>
-                                                                                                                 using namespace std;
 
-string longestPalindrome(string s)
+std ::string longestPalindrome(std ::string s)
 {
 
     // we are checking if the string is empty or contains only 1 character then we will return empty string
@@ -57,8 +56,8 @@ string longestPalindrome(string s)
 
 int main()
 {
-    string s;
-    cin >> s;
-    cout << "Longest Plaindromic Substring for input string is: " << longestPalindrome(s);
+    std ::string s;
+    std ::cin >> s;
+    std ::cout << "Longest Plaindromic Substring for input string is: " << longestPalindrome(s);
     return 0;
 }

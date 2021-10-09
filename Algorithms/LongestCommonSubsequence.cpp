@@ -1,9 +1,8 @@
 #include <bits/stdc++.h>
-using namespace std;
 //Longest Common Subsequence-leetcode
 //TC O(n*m)
 //Dynamic Programming Memoisation
-int longestCommonSubsequence(string text1, string text2)
+int longestCommonSubsequence(std ::string text1, std ::string text2)
 {
 
   int n = text1.size(), m = text2.size();
@@ -17,17 +16,17 @@ int longestCommonSubsequence(string text1, string text2)
       else if (text1[i - 1] == text2[j - 1])
         t[i][j] = 1 + t[i - 1][j - 1]; //take common element
       else
-        t[i][j] = max(t[i - 1][j], t[i][j - 1]); //either of one string reduces
+        t[i][j] = std::max(t[i - 1][j], t[i][j - 1]); //either of one std :: string reduces
     }
   }
   return t[n][m];
 }
 int main()
 {
-  string a, b;
-  cin >> a >> b;
+  std ::string a, b;
+  std ::cin >> a >> b;
   int ans;
   ans = longestCommonSubsequence(a, b);
-  cout << ans << endl;
+  std ::cout << ans << std ::endl;
   return 0;
 }
