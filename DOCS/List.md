@@ -21,6 +21,7 @@
 ### C++/C
 
 - Bubble Sort
+- Binary Search
 - Depth First Search
 - Expression Evaluation
 - Longest Common Subsequence
