@@ -1,17 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//returns index of target in a non-decreasing sorted array
-//returns -1 if element is not found
-int binarySearch(int arr[], int n, int target)
+
+int binarySearch(int arr[], int n, int target) //binary search function
 {
     int low = 0, high = n - 1;
     while (low <= high)
     {
         int mid = low + (high - low) / 2; //using mid=(low+high)/2 might cause integer overflow
         if (arr[mid] == target)
-        {
-            return mid;
+        {   
+            //returns index of target in a non-decreasing sorted array
+            return mid; 
         }
         else if (arr[mid] > target)
         {
@@ -22,6 +22,7 @@ int binarySearch(int arr[], int n, int target)
             low = mid + 1; //removing left half from search space
         }
     }
+    //returns -1 if element is not found
     return -1;
 }
 
