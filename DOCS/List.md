@@ -29,6 +29,7 @@
 - Parantheses Check
 - Insertion Sort
 - Selection Sort
+- Quick Sort
 
 ### Python
 
