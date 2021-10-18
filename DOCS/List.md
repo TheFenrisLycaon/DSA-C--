@@ -21,6 +21,7 @@
 ### C++/C
 
 - Bubble Sort
+- Binary Search
 - Depth First Search
 - Expression Evaluation
 - Longest Common Subsequence
@@ -28,6 +29,7 @@
 - Parantheses Check
 - Insertion Sort
 - Selection Sort
+- Quick Sort
 
 ### Python
 
