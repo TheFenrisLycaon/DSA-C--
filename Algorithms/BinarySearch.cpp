@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
 int binarySearch(int arr[], int n, int target) //binary search function
 {
     int low = 0, high = n - 1;
@@ -9,9 +8,9 @@ int binarySearch(int arr[], int n, int target) //binary search function
     {
         int mid = low + (high - low) / 2; //using mid=(low+high)/2 might cause integer overflow
         if (arr[mid] == target)
-        {   
+        {
             //returns index of target in a non-decreasing sorted array
-            return mid; 
+            return mid;
         }
         else if (arr[mid] > target)
         {
