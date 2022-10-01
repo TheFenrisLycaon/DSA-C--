@@ -41,7 +41,7 @@ git rebase upstream/<branch-name>
 Create a new branch. Use its name to identify the issue your addressing.
 
 ```bash
-# It will create a new branch with name Branch_Name and switch to that branch 
+# It will create a new branch with name Branch_Name and switch to that branch
 git checkout -b branch_name
 ```
 

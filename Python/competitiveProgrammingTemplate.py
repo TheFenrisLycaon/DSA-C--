@@ -1,5 +1,6 @@
 import sys
 import time
+
 # using template by FenrisLycaon
 
 
@@ -17,17 +18,17 @@ def maxSequence(arr):
 def getIn(x):
     # custom input
     # supposed to be faster
-    if x == 'ints':
+    if x == "ints":
         return list(map(int, sys.stdin.readline().strip().split()))
-    elif x == 'int':
+    elif x == "int":
         return int(sys.stdin.readline().strip().split()[0])
-    elif x == 'float':
+    elif x == "float":
         return float(map(float, sys.stdin.readline().strip().split()))
-    elif x == 'list':
+    elif x == "list":
         return list(map(sys.stdin.readline().strip().split()))
-    elif x == 'str':
+    elif x == "str":
         return str(sys.stdin.readline().strip())
-    elif x == 'charlist':
+    elif x == "charlist":
         return list(map(str, input().strip().split()))
     else:
         print("Input not recognised.")
@@ -42,7 +43,7 @@ def goOut(x):
             goOut(_)
         # sys.stdout.flush()
     else:
-        sys.stdout.write(str(x)+'\n')
+        sys.stdout.write(str(x) + "\n")
         # sys.stdout.flush()
 
 

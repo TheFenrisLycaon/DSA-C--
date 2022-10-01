@@ -58,12 +58,12 @@ class BinarySearchTree:
                 current = current.right
             elif current.data == val:
                 if not to_delete:
-                    return 'Match Found'
+                    return "Match Found"
                 return prev
             else:
                 break
         if not to_delete:
-            return 'Not Found'
+            return "Not Found"
 
     # Method to delete a tree-node if it exists,
     # Else error message will be returned.
@@ -84,21 +84,21 @@ class BinarySearchTree:
                 else:
                     prev2.right = None
                     self.root.data = temp.data
-                print('Deleted Root ', val)
+                print("Deleted Root ", val)
             # Check if node is to left of its parent
             elif prev.left and prev.left.data == val:
                 # Check if node is leaf node
                 if prev.left.left is prev.left.right:
                     prev.left = None
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has child at left and None at right
                 elif prev.left.left and prev.left.right is None:
                     prev.left = prev.left.left
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has child at right and None at left
                 elif prev.left.left is None and prev.left.right:
                     prev.left = prev.left.right
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Here node to be deleted has 2 children
                 elif prev.left.left and prev.left.right:
                     temp = prev.left
@@ -107,9 +107,9 @@ class BinarySearchTree:
                         temp = temp.right
                     prev2.right = None
                     prev.left.data = temp.data
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 else:
-                    print('Error Left')
+                    print("Error Left")
 
             # Check if node is to right of its parent
             elif prev.right.data == val:
@@ -118,16 +118,15 @@ class BinarySearchTree:
                 if prev.right.left is prev.right.right:
                     prev.right = None
                     flag = 1
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has left child at None at right
                 if prev.right and prev.right.left and prev.right.right is None:
                     prev.right = prev.right.left
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 # Check if node has right child at None at left
-                elif prev.right and prev.right.left is None\
-                        and prev.right.right:
+                elif prev.right and prev.right.left is None and prev.right.right:
                     prev.right = prev.right.right
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 elif prev.right and prev.right.left and prev.right.right:
                     temp = prev.right
                     while temp.left is not None:
@@ -135,7 +134,7 @@ class BinarySearchTree:
                         temp = temp.left
                     prev2.left = None
                     prev.right.data = temp.data
-                    print('Deleted Node ', val)
+                    print("Deleted Node ", val)
                 else:
                     if flag == 0:
                         print("Error")
@@ -143,7 +142,7 @@ class BinarySearchTree:
             print("Node doesn't exists")
 
     def __str__(self):
-        return 'Not able to print tree yet'
+        return "Not able to print tree yet"
 
 
 def is_bst(node, lower_lim=None, upper_lim=None):
@@ -194,6 +193,7 @@ def preorder(node):
     if node.right:
         preorder(node.right)
 
+
 # Levelwise
 
 
@@ -240,12 +240,12 @@ def inorder_itr(node):
     current = node
     while True:
         if current is not None:
-            stack.append(current)       # L
+            stack.append(current)  # L
             current = current.left
         elif stack != []:
             temp = stack.pop()
-            print(temp.data)            # N
-            current = temp.right        # R
+            print(temp.data)  # N
+            current = temp.right  # R
         else:
             break
 
@@ -284,7 +284,7 @@ def bst_frm_pre(pre_list):
             else:
                 all_less = True
             if i != 1:
-                box.left = bst_frm_pre(pre_list[1: i])
+                box.left = bst_frm_pre(pre_list[1:i])
             if not all_less:
                 box.right = bst_frm_pre(pre_list[i:])
     return box
@@ -323,7 +323,7 @@ def vertical_middle_level(t_node):
             queue.append((temp.left, level - 1))
         if temp.right:
             queue.append((temp.right, level + 1))
-    return ' '.join(ans)
+    return " ".join(ans)
 
 
 def get_level(n, val):
@@ -358,7 +358,7 @@ def rightSideView(root):
         return []
     right = rightSideView(root.right)
     left = rightSideView(root.left)
-    return [root.data] + right + left[len(right):]
+    return [root.data] + right + left[len(right) :]
 
 
 t = BinarySearchTree()

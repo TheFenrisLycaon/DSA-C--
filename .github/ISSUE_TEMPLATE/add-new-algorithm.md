@@ -7,6 +7,6 @@ assignees: ''
 
 ---
 
-Algo Name :: 
+Algo Name ::
 Algo Complexity ::
 Algo Language ::
