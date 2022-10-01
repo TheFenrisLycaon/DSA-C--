@@ -1,5 +1,5 @@
 def merge_sort(L):
-    """ Sort the array usin merge sorting"""
+    """Sort the array usin merge sorting"""
 
     # Calculate the value of middle index of array
     mid = int((len(L) - 1) / 2)
@@ -9,7 +9,7 @@ def merge_sort(L):
     # b is initialised with right side of the array
     if len(L) > mid + 2:
         a = merge_sort(L[0:mid])
-        b = merge_sort(L[mid:len(L)])
+        b = merge_sort(L[mid : len(L)])
 
     # This loop will when length of array is equal to 2
     # a is initiliased with the first element of array
@@ -28,8 +28,7 @@ def merge_sort(L):
     # This loop will run until
     # i is not equal to the lenth of array a OR
     # j is equal to length of array b
-    while (i != len(a)
-           or j != len(b)):
+    while i != len(a) or j != len(b):
 
         # Checking if value of i and j is lesser than length of array a and b
         if i < len(a) and j < len(b):

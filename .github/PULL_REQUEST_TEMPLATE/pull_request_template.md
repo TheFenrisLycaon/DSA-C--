@@ -2,9 +2,9 @@
 
 **DS or Algo Name** -
 
-### Issue no.(must) - #
+## Issue no.(must) -
 
-### Self Check(Tick After Making pull Request)
+## Self Check(Tick After Making pull Request)
 
 - [ ] This issue was assigned to me.
 - [x] One Change in one Pull Request

@@ -1,11 +1,11 @@
 def gcdNaive(m, n):
     fm = []
-    for i in range(1, m+1):
+    for i in range(1, m + 1):
         if m % i == 0:
             fm.append(i)
 
     fn = []
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         if n % i == 0:
             fn.append(i)
 
@@ -36,7 +36,7 @@ def gcdEuclid(m, n):
 
 
 def factors(n):
-    return ([x for x in range(1, n+1) if n % x == 0])
+    return [x for x in range(1, n + 1) if n % x == 0]
 
 
 def isPrime(n):
@@ -47,13 +47,13 @@ def nPrimes(n):
     count, i, res = 0, 1, []
     while count < n:
         if isPrime(i):
-            count, res = count+1, res+[i]
+            count, res = count + 1, res + [i]
         i += 1
     return res
 
 
 def primesUpto(n):
-    return ([x for x in range(1, n+1) if isPrime(x)])
+    return [x for x in range(1, n + 1) if isPrime(x)]
 
 
 def binarySearch(arr, key, left, right):
@@ -67,4 +67,4 @@ def binarySearch(arr, key, left, right):
     elif key > arr[mid]:
         return binarySearch(arr, key, mid, right)
     else:
-        return binarySearch(arr, key, left, mid+1)
+        return binarySearch(arr, key, left, mid + 1)
