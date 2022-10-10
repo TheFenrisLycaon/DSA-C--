@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool subsetSum(vector<int> v, int n, int sum)
+{
+    bool dp[n+1][sum+1];
+    int i,j;
+    for(i=0;i<=n;i++)
+        dp[i][0]=true;
+    for(j=1;j<=sum;j++)
+        dp[0][j]=false;
+    for(i=1;i<=n;i++)
+    {
+        for(j=1;j<=sum;j++)
+        {
+            if(dp[i-1][j]==true)
+                dp[i][j]=true;
+            else
+            {
+                if(v[i-1]>j)
+                    dp[i][j]=false;
+                else
+                    dp[i][j]=dp[i-1][j-v[i-1]];
+            }
+        }
+    }
+    return dp[n][sum];
+}
+
+int main()
+{
+    int n, sum;
+    cout << "Enter number of elements: ";
+    cin >> n;
+    vector<int> v(n);
+    cout << "\nEnter the values" << endl;
+    for(int i=0;i<n;i++)
+	{
+		cout << "Enter v["<<i<<"]: ";
+      	cin>>v[i];
+	}
+    cout << "\nEnter the value of sum: ";
+    cin >> sum;
+    if (subsetSum(v, n, sum))
+       cout << "\nSubset with the given sum found" << endl;
+    else
+       cout << "\nNo required subset found" << endl;   
+    return 0;
+}
