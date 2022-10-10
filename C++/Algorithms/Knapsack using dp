@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int knapSack(int W, vector<int> w, vector<int> v, int n)
+{
+	vector<vector<int>> K(n + 1, vector<int>(W + 1));
+	for(int i = 0; i <= n; i++)
+	{
+		for(int j = 0; j <= W; j++)
+		{
+			if (i == 0 || j == 0)
+				K[i][j] = 0;
+			else if (w[i - 1] <= j)
+				K[i][j] = max(v[i - 1] +
+								K[i - 1][j - w[i - 1]],
+								K[i - 1][j]);
+			else
+				K[i][j] = K[i - 1][j];
+		}
+	}
+	/*
+	for(int i=0;i<=n;i++)
+	{
+		for(int j=0;j<=W;j++)
+		{
+			cout<<K[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	*/
+	return K[n][W];
+}
+
+int main()
+{
+	int n,W;
+	cout << "Enter the number of items in a Knapsack: ";
+	cin>>n;
+	vector<int> v(n),w(n);
+	for(int i=0;i<n;i++)
+	{
+		cout<<"Enter value and weight for item [" << i << "] : ";
+		cin>>v[i]>>w[i];
+	}
+	cout << "Enter the capacity of knapsack: ";
+	cin>>W;
+	cout << endl << "Maximum value of items in the Knapsack: "<<knapSack(W, w, v, n) << endl;
+	return 0;
+}
