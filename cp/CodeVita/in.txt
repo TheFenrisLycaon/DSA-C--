@@ -1,0 +1,28 @@
+5
+1
+Blue Car
+Red Umbrella
+Black Hat
+White Ribbon
+Yellow RainCoat
+2
+Blue Umbrella
+Black Hat
+Blue RainCoat
+Black Umbrella
+
+
+3
+3
+John Wolf Short King
+Tyrion Lion Dwarf Hand
+Dany Dragon Unburned Queen
+4
+Tyrion Lion Dwarf Hand
+John Dragon Handsome Stupid
+Dany Mother Killer Hater
+Jamie Lion Guard Lover
+Aegon Dragon Killer Hater
+John Dragon Rider Hero
+Bran Wolf Raven Broken
+Jamie Hand Broken King
