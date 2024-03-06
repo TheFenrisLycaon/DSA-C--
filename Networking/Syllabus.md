@@ -1,0 +1,328 @@
+# Syllabus
+
+## Basics
+
+- Basics of Computer Networking
+- The Internet and the Web
+- Internet of Everything
+- Unknown facts of Networking
+- Network goals
+- Line Configuration
+- Transmission Modes
+- Types of Transmission Media
+- Unicast, Broadcast and Multicast
+- Introduction to basic Networking terminology
+- Network Topologies
+- Types of area networks – LAN, MAN and WAN
+- Telecom Networks
+- Access networks
+- TCP/IP Model
+- Layers of OSI Model
+- Introduction to Active Directory Domain Service
+- Advantages and Disadvantages of Computer Networking
+
+## Data Link Layer
+
+- Local Area Network (LAN) Technologies.
+- Bridges (local Internetworking device)
+- Internetworking
+- Framing In Data Link Layer
+- Introduction of MAC Address
+- MAC Filtering
+- Multiple Access Protocols
+- Ethernet Frame Format
+- EtherChannel
+- Difference between Byte stuffing and Bit stuffing
+- Implementing Byte stuffing using Java
+- Circuit Switching
+- Packet Switching and Delays
+- Circuit Switching VS Packet Switching
+- Differences between Virtual Circuits & Datagram Networks
+- Switching techniques: Message switching
+- Types of switches
+- Maximum data rate (channel capacity) for noiseless and noisy channels
+- HotSpot 2.0
+- Collision Avoidance in wireless networks
+- Traditional wireless mobile communication
+- Carrier sense multiple access (CSMA)
+- Collision Detection in CSMA/CD
+- Efficiency of CSMA/CD
+- Back-off Algorithm for CSMA/CD
+- Controlled Access Protocols
+- Virtual LAN (VLAN)
+- Inter VLAN Routing by Layer 3 Switch
+- Private VLAN
+- VLAN ACL (VACL)
+- Access and trunk ports
+- Role-based access control
+- Port security
+- Inter-Switch Link (ISL) and IEEE 802.1Q
+- Dynamic Trunking Protocol (DTP)
+- Sliding Window Protocol
+  - Sender Side
+  - Receiver Side
+  - Selective Repeat
+- Sliding Window protocols Summary
+- Stop and Wait ARQ
+- Difference between Stop and Wait, GoBackN and Selective Repeat
+- Manchester Encoding
+- Error Detection
+- Hamming Code
+- Program to remotely Power On a PC over the Internet using the Wake-on-LAN protocol.
+- Basics of Wi-Fi
+- IEEE 802.11 Mac Frame
+- Efficiency Of Token Ring
+- Token Bus (IEEE 802.4)
+- Multiplexing (Channel Sharing)
+- Frequency division and Time division multiplexing
+
+## Network Layer
+
+- Integrated services digital network (ISDN)
+- Introduction and IPv4 Datagram Header
+- IP Addressing
+  - Introduction and Classful Addressing
+  - Classless Addressing
+- IPv4 classless Subnet equation
+- Supernetting
+- Ipv4 Datagram Fragmentation and Delays
+- Fragmentation at Network Layer
+- Internet Protocol v6 | IPv6
+- Internet Protocol version 6 (IPv6) Header
+- Differences between IPv4 and IPv6
+- Internet Control Message Protocol (ICMP)
+- Longest Prefix Matching in Routers
+- Routing v/s Routed Protocols
+- Fixed and Flooding Routing algorithms
+- Classes of routing protocols
+- Types of routing
+- Classification of Routing Algorithms
+- Routing Protocols Set 1 (Distance Vector Routing)
+- Route Poisoning and Count to infinity problem
+- Redundant link problems
+- Administrative Distance (AD) and Autonomous System (AS)
+- Unicast Routing – Link State Routing
+- Link state advertisement (LSA)
+- Securing Routing Protocols
+- Distance vector routing v/s Link state routing
+- Routing Information Protocol (RIP)
+- Routing Interface Protocol (RIP) V1 & V2
+- Redistribution
+- EIGRP fundamentals
+- EIGRP Configuration
+- Features of Enhanced Interior Gateway Routing Protocol (EIGRP)
+- EIGRP cost calculation
+- Open shortest path first
+  - Protocol fundamentals
+  - Router roles and configuration
+  - Protocol States
+- Probabilistic shortest path routing algorithm for optical networks
+- Types of Spanning Tree Protocol (STP)
+- Network address translation (NAT)
+- Types of Network address translation (NAT)
+- Static NAT (on ASA)
+- Dynamic NAT (on ASA)
+- VRRP(Virtual Router Redundancy Protocol)
+- Hot Standby Router Protocol (HSRP)
+- Router on a stick | Introduction and Configuration
+- Traceroute
+- What’s difference between Ping and Traceroute?
+- ARP, Reverse ARP(RARP), Inverse ARP(InARP), Proxy ARP and Gratuitous ARP
+- How ARP works?
+- Packet flow in the same network
+- Packet flow in different network
+- Wifi protected access (WPA)
+- Wifi protected setup (WPS)
+- LiFi vs. WiFi
+- Service Set Identifier (SSID)
+- Access-lists (ACL)
+- Context based access control (CBAC)
+- Standard Access-list
+- Extended access-list
+- Reflexive Access-list
+- Time based access-list
+- AAA (Authentication, Authorization and Accounting)
+- AAA (authentication) configuration (locally)
+- Challenge Response Authentication Mechanism (CRAM)
+- Synchronous Optical Network (SONET)
+- RADIUS
+- TACACS+
+- TACACS+ and RADIUS
+
+## Transport Layer
+
+- Connection Establishment
+- 3-Way Handshake Process
+- Timers
+- Connection Termination
+- Wrap Around Concept
+- Transport Layer responsibilities
+- Multiplexing and Demultiplexing in Transport Layer
+- User Datagram Protocol (UDP)
+- P2P(Peer To Peer) File Sharing
+- Congestion Control
+- TCP Congestion Control
+- Congestion control techniques
+- Leaky Bucket Algorithm
+- Error Control in TCP
+- flags
+- Services and Segment structure
+- Server-Client implementation in C
+- TCP and UDP server using select
+- Servers
+
+## Application Layer
+
+- Protocols in Application Layer
+- Simple Mail Transfer Protocol (SMTP)
+- DNS (Domain Name Server)
+- Why does DNS use UDP and not TCP?
+- Address Resolution in DNS
+- DNS Spoofing or DNS Cache poisoning
+- Types of DNS Attacks and Tactics for Security
+- What’s difference between http:// and https:// ?
+- What’s difference between HTML and HTTP ?
+- HTTP Non-Persistent & Persistent Connection | Set 1
+- File Transfer Protocol (FTP)
+- What are the differences between HTTP, FTP, and SMTP?
+- Asynchronous Transfer Mode (ATM)
+- What is Local Host?
+- Dynamic Host Configuration Protocol (DHCP)
+- DHCP Relay Agent
+- How DHCP server dynamically assigns IP address to a host?
+- What’s difference between The Internet and The Web ?
+- Simple network management protocol (SNMP)
+- Multipurpose Internet mail extension (MIME)
+- MIME Media Types
+- Quality of Service and Multimedia
+- Web Caching and the Conditional GET Statements
+
+## Network Security and Cryptography
+
+- The CIA triad
+- Introduction to Firewall
+- Types of firewall and possible attacks
+- Firewall methodologies
+- Zone-based firewall
+- Zone-based firewall Configuration
+- How to setup firewall in Linux?
+- Message Authentication Codes
+- How message authentication code works?
+- HMAC Algorithm
+- Password authentication protocol (PAP)
+- Basic Network Attacks
+- Birthday attack
+- Vishing (Voice Phishing)
+- System security
+- Private Browsing
+- Threat Modelling
+- DFD Based Threat modelling
+- Types of Viruses
+- Deniel of Service and Prevention
+- Denial of Service DDoS attack
+- Unicode
+- RC4 Encryption Algorithm
+- RSA Algorithm in Cryptography
+- RSA Algorithm using Multiple Precision Arithmetic Library
+- Weak RSA decryption with Chinese-remainder theorem
+- How to solve RSA Algorithm Problems?
+- Hash Functions in System Security
+- DNA Cryptography
+- RC5 Encryption Algorithm
+- ElGamal Encryption Algorithm
+- Caesar Cipher
+- Cryptography
+  - Introduction
+  - Traditional Symmetric Ciphers
+  - Development of Cryptography
+- Block cipher modes of operation
+- Difference between AES and DES ciphers
+- Transforming a Plain Text message to Cipher Text
+- What is a cryptocurrency?
+- Introduction to Crypto-terminologies
+- Quantum Cryptography
+- End to End Encryption (E2EE) in Computer Networks
+- IP security (IPSec)
+- What is Packet Sniffing ?
+- Introduction to Sniffers
+- Data encryption standard (DES)
+- End to End Encryption (E2EE) in Computer Network
+- Types of Security attacks
+- Types of Wireless and Mobile Device Attacks
+- Types of Email Attacks
+- Sybil Attack
+- Malware and its types
+
+## Compression Techniques
+
+- LZW (Lempel–Ziv–Welch) Compression technique
+- Data Compression With Arithmetic Coding
+- Shannon-Fano Algorithm for Data Compression
+
+## Network Experiments
+
+- Let’s experiment with Networking
+- Mobile Ad hoc Network
+- Types of MANET
+- Simple Chat Room using Python
+- Socket Programming in Java
+- C Program to find IP Address, Subnet Mask & Default Gateway
+- Introduction to variable length subnet mask (VLSM)
+- Extracting MAC address using Python
+- Implementation of Diffie-Hellman Algorithm
+- Java Implementation of Deffi-Hellman Algorithm between Client and Server
+- Socket Programming in Python
+- Socket Programming with Multi-threading in Python
+- Cyclic Redundancy Check in Python
+- Explicitly assigning port number to client in Socket
+- Netstat command in Linux:
+- nslookup command in Linux with Examples
+- UDP Server-Client implementation in C
+- C program for file Transfer using UDP
+- Java program to find IP address of your computer
+- Finding IP address of a URL in Java
+- Program to calculate the Round Trip Time (RTT)
+- Network configuration and trouble shooting commands in Linux
+- Implementing Checksum Using Java
+- C Program to display hostname and IP address
+- Program to determine class, Network and Host ID of an IPv4 address
+- Program to determine Class, Broadcast address and Network address of an IPv4 address
+- Program for IP forwarding table lookup
+- Wi-Fi Password of All Connected Networks in Windows/Linux
+
+## Devices
+
+- Network Devices (Hub, Repeater, Bridge, Switch, Router and Gateways)
+- Inside a Router
+- Bridges (local Internetworking device)
+- Switch functions at layer 2
+- Collision Domain and Broadcast Domain
+- Root Bridge Election in Spanning Tree Protocol
+
+## Misc
+
+- Onion Routing
+- Types of Server Virtualization
+- Characteristics of Virtualization
+- On-premises cost estimates of Virtualization
+- Hardware Based Virtualization
+- Operating system based Virtualization
+- Digital Subscriber Line (DSL)
+- Image Steganography
+- Network Neutrality
+- Basics of NS2 and Otcl/tcl script
+- Voice over Internet Protocol (VoIP)
+- Cisco router modes
+- Cisco router basic commands
+- Backing up Cisco IOS router image
+- Basic configuration of adaptive security appliance (ASA)
+- Adaptive security appliance (ASA) features
+- Default flow of traffic (ASA)
+- Cisco ASA Redistribution example
+- Telnet and SSH on Adaptive security appliance (ASA)
+- Near Field Communication (NFC)
+- Relabel-to-front Algorithm
+- Berkeley’s Algorithm
+- Cristian’s Algorithm
+- Universal Serial Bus (USB) in Computer Network
+- Type-C Port in Computer Network
