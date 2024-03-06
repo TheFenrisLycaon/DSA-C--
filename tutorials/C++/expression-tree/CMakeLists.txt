@@ -1,0 +1,67 @@
+cmake_minimum_required(VERSION 3.16)
+project(expression_tree)
+
+set(CMAKE_CXX_STANDARD 17)
+
+include_directories(.)
+
+add_executable(expression_tree
+        composites/Component_Node.cpp
+        composites/Component_Node.h
+        composites/Composite_Add_Node.cpp
+        composites/Composite_Add_Node.h
+        composites/Composite_Binary_Node.cpp
+        composites/Composite_Binary_Node.h
+        composites/Composite_Divide_Node.cpp
+        composites/Composite_Divide_Node.h
+        composites/Composite_Multiply_Node.cpp
+        composites/Composite_Multiply_Node.h
+        composites/Composite_Negate_Node.cpp
+        composites/Composite_Negate_Node.h
+        composites/Composite_Subtract_Node.cpp
+        composites/Composite_Subtract_Node.h
+        composites/Composite_Unary_Node.cpp
+        composites/Composite_Unary_Node.h
+        visitors/Evaluation_Visitor.cpp
+        visitors/Evaluation_Visitor.h
+        input/Event_Handler.cpp
+        input/Event_Handler.h
+        trees/Expression_Tree.cpp
+        trees/Expression_Tree.h
+        commands/User_Command.cpp
+        commands/User_Command.h
+        commands/User_Command_Factory.cpp
+        commands/User_Command_Factory.h
+        commands/User_Command_Factory_Impl.cpp
+        commands/User_Command_Factory_Impl.h
+        commands/User_Command_Impl.cpp
+        commands/User_Command_Impl.h
+        states/Tree_Context.cpp
+        states/Tree_Context.h
+        iterators/Iterator.cpp
+        iterators/Iterator.h
+        iterators/Iterator_Impl.cpp
+        iterators/Iterator_Impl.h
+        states/State.cpp
+        states/State.h
+        utils/getopt.cpp
+        utils/getopt.h
+        interpreters/Interpreter.cpp
+        interpreters/Interpreter.h
+        interpreters/Interpreter_Impl.cpp
+        interpreters/Interpreter_Impl.h
+        interpreters/Expr.cpp
+        interpreters/Expr.h
+        composites/Leaf_Node.cpp
+        composites/Leaf_Node.h
+        main.cpp
+        utils/Options.cpp
+        utils/Options.h
+        visitors/Print_Visitor.cpp
+        visitors/Print_Visitor.h
+        input/Reactor.cpp
+        input/Reactor.h
+        utils/Refcounter.cpp
+        utils/Refcounter.h
+        visitors/Visitor.cpp
+        visitors/Visitor.h)
